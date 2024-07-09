@@ -22,7 +22,7 @@ scipy==1.10.1
 seaborn==0.12.2
 sentencepiece==0.1.99
 sphinx==5.0.2
-tokenizers==0.13.2
+tokenizers==0.15.2
 torch==2.0.1
 torchaudio==2.0.2
 torch-geometric==2.3.0
