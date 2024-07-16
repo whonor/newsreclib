@@ -44,9 +44,15 @@ If you want to use NewsRecLib with GPU, please ensure CUDA or cudatoolkit versio
    conda activate newsreclib_env
    pip install -e .
 ```
-Note: There may be problems when installing MulticoreTSNE. We can take the source into our virtual environment manually.
+Note: 
 
-Reference: https://blog.csdn.net/m0_45924886/article/details/133122422
+- There may be problems when installing MulticoreTSNE. We can take the source into our virtual environment manually.
+
+  Reference: https://blog.csdn.net/m0_45924886/article/details/133122422
+
+- torch cuda version needs to be installed manually.
+
+
 
 ## Quick Start
 
