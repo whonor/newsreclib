@@ -56,7 +56,7 @@ def generate_pretrained_embeddings(
     embedding_matrix = np.random.normal(size=(len(word2index) + 1, embed_dim))
     exist_word = set()
 
-    with open(embeddings_fpath) as f:
+    with open(embeddings_fpath, encoding='utf-8') as f:
         for line in tqdm(f):
             linesplit = line.split(" ")
             word = line[0]
