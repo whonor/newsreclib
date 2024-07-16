@@ -4,7 +4,7 @@
 # python train.py experiment=example
 
 defaults:
-  - override /data: mind_rec_bert_sent.yaml
+  - override /data: mind_rec.yaml
   - override /model: nrms.yaml
   - override /callbacks: default.yaml
   - override /logger: many_loggers.yaml
@@ -19,6 +19,7 @@ seed: 42
 
 data:
   dataset_size: "small"
+  num_workers: 8
 
 model:
   loss: "sup_con_loss"
@@ -35,7 +36,7 @@ callbacks:
     patience: 5
 
 trainer:
-  max_epochs: 20
+  max_epochs: 2
 
 logger:
   wandb:

@@ -158,3 +158,4 @@ outputs
 configs/experiment/mins_mindsmall_pretrainedemb_celoss_bertsent.yaml
 configs/experiment/nrms_mindsmall_pretrainedemb_supconloss_bertsent.yaml
 configs/experiment/nrms_mindsmall_pretrainedemb_supconloss_bertsent.yaml
+*.yaml

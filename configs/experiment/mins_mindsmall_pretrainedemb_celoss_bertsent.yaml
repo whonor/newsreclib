@@ -4,7 +4,7 @@
 # python train.py experiment=example
 
 defaults:
-  - override /data: mind_rec_bert_sent.yaml
+  - override /data: mind_rec.yaml
   - override /model: mins.yaml
   - override /callbacks: default.yaml
   - override /logger: many_loggers.yaml
