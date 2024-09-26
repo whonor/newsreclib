@@ -159,3 +159,13 @@ configs/experiment/mins_mindsmall_pretrainedemb_celoss_bertsent.yaml
 configs/experiment/nrms_mindsmall_pretrainedemb_supconloss_bertsent.yaml
 configs/experiment/nrms_mindsmall_pretrainedemb_supconloss_bertsent.yaml
 *.yaml
+configs/experiment/mins_adressaoneweek_pretrainedemb_celoss_bertsent.yaml
+/configs
+configs/data/mind_rec.yaml
+*.yaml
+configs/data/adressa_rec.yaml
+configs/data/mind_rec.yaml
+configs/experiment/mins_adressaoneweek_pretrainedemb_celoss_bertsent.yaml
+configs/data/adressa_rec.yaml
+/configs
+configs/experiment/mins_adressaoneweek_pretrainedemb_celoss_bertsent.yaml
