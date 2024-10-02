@@ -4,10 +4,11 @@ import numpy as np
 import torch
 import torch.nn as nn
 from torch_geometric.utils import to_dense_batch
-from torchmetrics import MetricCollection
+from torchmetrics import MetricCollection, MeanSquaredError, MeanAbsoluteError
 from torchmetrics.classification import AUROC
 from torchmetrics.functional import pairwise_cosine_similarity
-from torchmetrics.retrieval import RetrievalMRR, RetrievalNormalizedDCG
+from torchmetrics.retrieval import RetrievalMRR, RetrievalNormalizedDCG, RetrievalPrecision, RetrievalHitRate, \
+    RetrievalRecall
 
 from newsreclib.data.components.batch import RecommendationBatch
 from newsreclib.metrics.diversity import Diversity
@@ -211,12 +212,29 @@ class MINERModule(AbstractRecommneder):
             {
                 "auc": AUROC(task="binary", num_classes=2),
                 "mrr": RetrievalMRR(),
+                'mae': MeanAbsoluteError(),
+                'rmse': MeanSquaredError(squared=False)
             }
         )
         ndcg_metrics_dict = {}
         for k in self.hparams.top_k_list:
             ndcg_metrics_dict["ndcg@" + str(k)] = RetrievalNormalizedDCG(top_k=k)
         rec_metrics.add_metrics(ndcg_metrics_dict)
+
+        recall_metrics_dict = {}
+        for k in self.hparams.top_k_list:
+            recall_metrics_dict["Recall@" + str(k)] = RetrievalRecall(top_k=k)
+        rec_metrics.add_metrics(recall_metrics_dict)
+
+        hit_metrics_dict = {}
+        for k in self.hparams.top_k_list:
+            hit_metrics_dict["Hit@" + str(k)] = RetrievalHitRate(top_k=k)
+        rec_metrics.add_metrics(hit_metrics_dict)
+
+        precision_metrics_dict = {}
+        for k in self.hparams.top_k_list:
+            precision_metrics_dict["Hit@" + str(k)] = RetrievalPrecision(top_k=k)
+        rec_metrics.add_metrics(precision_metrics_dict)
 
         self.train_rec_metrics = rec_metrics.clone(prefix="train/")
         self.val_rec_metrics = rec_metrics.clone(prefix="val/")

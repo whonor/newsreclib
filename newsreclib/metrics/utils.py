@@ -1,7 +1,9 @@
 from typing import Dict, Optional, Union
 
+from torchmetrics import MeanSquaredError
 from torchmetrics.classification import AUROC
-from torchmetrics.retrieval import RetrievalMRR, RetrievalNormalizedDCG
+from torchmetrics.retrieval import RetrievalMRR, RetrievalNormalizedDCG, RetrievalHitRate, RetrievalRecall, RetrievalPrecision
+from torchmetrics.regression import MeanAbsoluteError
 
 from newsreclib.metrics.diversity import Diversity
 from newsreclib.metrics.personalization import Personalization
@@ -35,5 +37,15 @@ def get_metric(metric_name: str, metric_params: Optional[Dict[str, Union[str, in
         return Personalization(
             num_classes=metric_params["num_classes"], top_k=metric_params["top_k"]
         )
+    elif "recall" in metric_name:
+        return RetrievalRecall(top_k=metric_params["top_k"])
+    elif "hit" in metric_name:
+        return RetrievalHitRate(top_k=metric_params["top_k"])
+    elif "precision" in metric_name:
+        return RetrievalPrecision(top_k=metric_params["top_k"])
+    elif "mae" in metric_name:
+        return MeanAbsoluteError()
+    elif "rmse" in metric_name:
+        return MeanSquaredError(squared=False)
     else:
         raise ValueError(f"Metric {metric_name} not supported.")
