@@ -236,7 +236,7 @@ class NAMLModule(AbstractRecommneder):
 
         precision_metrics_dict = {}
         for k in self.hparams.top_k_list:
-            precision_metrics_dict["Hit@" + str(k)] = RetrievalPrecision(top_k=k)
+            precision_metrics_dict["Precision@" + str(k)] = RetrievalPrecision(top_k=k)
         rec_metrics.add_metrics(precision_metrics_dict)
 
         self.train_rec_metrics = rec_metrics.clone(prefix="train/")

@@ -169,3 +169,4 @@ configs/experiment/mins_adressaoneweek_pretrainedemb_celoss_bertsent.yaml
 configs/data/adressa_rec.yaml
 /configs
 configs/experiment/mins_adressaoneweek_pretrainedemb_celoss_bertsent.yaml
+/configs/
